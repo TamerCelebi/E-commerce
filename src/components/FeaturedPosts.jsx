@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaRegClock, FaChartArea, FaRegComments } from 'react-icons/fa';
-import { featuredPosts } from '../data/featuredPosts';
+import React from "react";
+import { FaRegClock, FaChartArea, FaRegComments } from "react-icons/fa";
+import { featuredPosts } from "../data/featuredPosts";
 
 const FeaturedPosts = () => {
   return (
@@ -36,9 +36,7 @@ const FeaturedPosts = () => {
             </h3>
 
             {/* Description */}
-            <p className="text-[#737373] mb-4">
-              {post.description}
-            </p>
+            <p className="text-[#737373] mb-4">{post.description}</p>
 
             {/* Meta Info */}
             <div className="flex items-center justify-between">
@@ -57,7 +55,10 @@ const FeaturedPosts = () => {
             </div>
 
             {/* Learn More */}
-            <a href="#" className="inline-block mt-6 text-[#737373] hover:text-[#252B42] transition-colors">
+            <a
+              href="#"
+              className="inline-block mt-6 text-[#737373] hover:text-[#252B42] transition-colors"
+            >
               Learn More →
             </a>
           </div>

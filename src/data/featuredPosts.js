@@ -1,22 +1,36 @@
 export const featuredPosts = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
-    category: "Google",
-    title: "Loudest à la Madison #1 (L'integral)",
-    description: "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
-    date: "22 April 2023",
-    comments: 10,
-    views: "8K"
+    image: "https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg",
+    department: "English Department",
+    title: "Graphic Design",
+    rating: 4.9,
+    description:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    sales: 15,
+    originalPrice: 16.48,
+    salePrice: 6.48,
+    colors: ["#23A6F0", "#E77C40", "#252B42", "#000000"],
+    duration: "22h...",
+    lessons: 64,
+    hasProgress: true,
+    sale: true,
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84",
-    category: "Trending",
-    title: "Loudest à la Madison #2 (L'integral)",
-    description: "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
-    date: "22 April 2023",
-    comments: 10,
-    views: "8K"
-  }
+    image: "https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg",
+    department: "English Department",
+    title: "Graphic Design",
+    rating: 4.9,
+    description:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    sales: 15,
+    originalPrice: 16.48,
+    salePrice: 6.48,
+    colors: ["#23A6F0", "#E77C40", "#252B42", "#000000"],
+    duration: "22h...",
+    lessons: 64,
+    hasProgress: true,
+    sale: true,
+  },
 ];
