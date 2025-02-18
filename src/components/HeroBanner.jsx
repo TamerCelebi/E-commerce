@@ -3,35 +3,30 @@ import { Link } from 'react-router-dom';
 
 const HeroBanner = () => {
   return (
-    <div className="relative min-h-[600px] overflow-hidden bg-gradient-to-r from-[#96E9FB] to-[#ABECD6]">
+    <div className="relative h-[600px] bg-[#23856D]">
       <div className="container mx-auto px-4 h-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
-          {/* Sol taraf - İçerik */}
-          <div className="flex flex-col justify-center z-10">
-            <span className="text-[#23A6F0] text-lg font-bold mb-4">
-              SUMMER 2024
-            </span>
-            <h1 className="text-[#252B42] text-5xl font-bold mb-6">
-              NEW COLLECTION
-            </h1>
-            <p className="text-[#737373] text-xl mb-8 max-w-md">
+        <div className="flex items-center h-full">
+          {/* Text Content */}
+          <div className="w-full lg:w-1/2 text-white z-10">
+            <h5 className="text-base font-bold mb-4">SUMMER 2024</h5>
+            <h1 className="text-5xl font-bold mb-4">NEW COLLECTION</h1>
+            <p className="text-xl mb-8">
               We know how large objects will act, but things on a small scale.
             </p>
-            <Link 
+            <Link
               to="/shop"
-              className="bg-[#23A6F0] text-white px-10 py-4 rounded-md text-lg font-medium hover:bg-[#1a7ab3] transition-colors w-fit"
+              className="inline-block bg-[#2DC071] hover:bg-[#23856D] text-white px-10 py-4 rounded-md text-lg font-medium transition-colors"
             >
               SHOP NOW
             </Link>
           </div>
 
-          {/* Sağ taraf - Resim */}
-          <div className="relative flex items-center justify-center">
-            <img 
-              src="https://picsum.photos/800/1000?random=40"
-              alt="Summer Collection Model"
-              className="absolute right-0 max-h-[600px] object-cover object-center"
-              loading="lazy"
+          {/* Image */}
+          <div className="hidden lg:block absolute right-0 top-0 h-full w-1/2">
+            <img
+              src="https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg"
+              alt="Fashion Model"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>
@@ -40,4 +35,4 @@ const HeroBanner = () => {
   );
 };
 
-export default React.memo(HeroBanner);
+export default HeroBanner;

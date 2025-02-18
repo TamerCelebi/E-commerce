@@ -5,6 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '1rem',
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+      },
+    },
     extend: {
       keyframes: {
         fadeIn: {
@@ -14,7 +24,21 @@ export default {
       },
       animation: {
         fadeIn: 'fadeIn 0.8s ease-out'
-      }
+      },
+      colors: {
+        primary: {
+          DEFAULT: '#23A6F0',
+          dark: '#1B80BE',
+        },
+        secondary: '#737373',
+        dark: '#252B42',
+        muted: '#BDBDBD',
+        error: '#E74040',
+        success: '#23856D',
+      },
+      backgroundImage: {
+        'gradient-banner': 'linear-gradient(to right, #96E9FB, #ABECD6)',
+      },
     },
   },
   plugins: [],

@@ -1,98 +1,84 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { products } from '../data/shopData';
+import { FaStar } from 'react-icons/fa';
 
 const FeaturedProducts = () => {
-  const products = [
-    {
-      id: 1,
-      image: "https://picsum.photos/200/300?random=1",
-      title: "Graphic Design",
-      category: "English Department",
-      price: "$16.48",
-      discountedPrice: "$6.48",
-      sale: true
-    },
-    {
-      id: 2,
-      image: "https://picsum.photos/200/300?random=2",
-      title: "Graphic Design",
-      category: "English Department",
-      price: "$16.48",
-      discountedPrice: "$6.48",
-      sale: true
-    },
-    {
-      id: 3,
-      image: "https://picsum.photos/200/300?random=3",
-      title: "Graphic Design",
-      category: "English Department",
-      price: "$16.48",
-      discountedPrice: "$6.48",
-      sale: true
-    },
-    {
-      id: 4,
-      image: "https://picsum.photos/200/300?random=4",
-      title: "Graphic Design",
-      category: "English Department",
-      price: "$16.48",
-      discountedPrice: "$6.48",
-      sale: true
-    },
-    {
-      id: 5,
-      image: "https://picsum.photos/200/300?random=5",
-      title: "Graphic Design",
-      category: "English Department",
-      price: "$16.48",
-      discountedPrice: "$6.48",
-      sale: true
-    }
-  ];
+  // İlk 10 ürünü göster
+  const featuredProducts = products.slice(0, 10);
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-[#252B42] text-2xl font-bold mb-4">BESTSELLER PRODUCTS</h2>
-        </div>
+    <div className="container mx-auto px-4 py-16">
+      <div className="text-center mb-12">
+        <h5 className="text-[#737373] text-xl mb-2">Featured Products</h5>
+        <h2 className="text-[#252B42] text-4xl font-bold mb-4">BESTSELLER PRODUCTS</h2>
+        <p className="text-[#737373]">Problems trying to resolve the conflict between</p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Sol taraftaki resim */}
-              <div className="relative h-[600px] overflow-hidden rounded-lg">
-                <img 
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Sağ taraftaki içerik */}
-              <div className="flex flex-col justify-center">
-                <h5 className="text-[#23A6F0] text-xl mb-4">Featured Products</h5>
-                <h2 className="text-[#252B42] text-4xl font-bold mb-6">{product.title}</h2>
-                
-                <div className="space-y-4 text-[#737373]">
-                  <p>
-                    Problems trying to resolve the conflict between 
-                    the two major realms of Classical physics: 
-                    Newtonian mechanics.
-                  </p>
-                  <p>
-                    Problems trying to resolve the conflict between 
-                    the two major realms of Classical physics: 
-                    Newtonian mechanics
-                  </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {featuredProducts.map((product) => (
+          <Link 
+            key={product.id} 
+            to={`/product/${product.id}`}
+            className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+          >
+            <div className="relative aspect-[3/4]">
+              <img 
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              {product.originalPrice > product.price && (
+                <span className="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 text-sm rounded">
+                  Sale
+                </span>
+              )}
+            </div>
+            <div className="p-4">
+              <h3 className="text-[#252B42] font-bold truncate">{product.name}</h3>
+              <p className="text-[#737373] text-sm mb-2">{product.department}</p>
+              <div className="flex items-center mb-2">
+                <div className="flex">
+                  {[...Array(5)].map((_, index) => (
+                    <FaStar
+                      key={index}
+                      className={index < Math.floor(product.rating) ? "text-yellow-400" : "text-gray-300"}
+                    />
+                  ))}
                 </div>
+                <span className="ml-2 text-sm text-gray-600">({product.reviews})</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                {product.originalPrice > product.price && (
+                  <span className="text-sm text-gray-500 line-through">${product.originalPrice}</span>
+                )}
+                <span className="text-[#23856D] font-bold">${product.price}</span>
+              </div>
+              <div className="mt-2 flex gap-2">
+                {product.colors.map((color, index) => (
+                  <div
+                    key={index}
+                    className="w-4 h-4 rounded-full border border-gray-300"
+                    style={{ backgroundColor: color }}
+                  />
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
-    </section>
+
+      <div className="text-center mt-8">
+        <Link 
+          to="/shop"
+          className="inline-block px-8 py-3 border-2 border-[#23A6F0] text-[#23A6F0] rounded-md hover:bg-[#23A6F0] hover:text-white transition-colors"
+        >
+          LOAD MORE PRODUCTS
+        </Link>
+      </div>
+    </div>
   );
 };
 
-export default React.memo(FeaturedProducts);
+export default FeaturedProducts;

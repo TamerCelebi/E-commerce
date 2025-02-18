@@ -1,56 +1,62 @@
-import { services } from '../data/services';
-import { BsBook, BsJournalText, BsGraphUp } from 'react-icons/bs';
-
-const iconMap = {
-  book: BsBook,
-  notebook: BsJournalText,
-  graph: BsGraphUp
-};
+import React from 'react';
+import { FaBook, FaChartLine, FaRocket } from 'react-icons/fa';
 
 const Services = () => {
+  const services = [
+    {
+      id: 1,
+      icon: <FaBook className="w-8 h-8 text-[#23A6F0]" />,
+      title: "Easy Wins",
+      description: "Get your best looking smile now!"
+    },
+    {
+      id: 2,
+      icon: <FaChartLine className="w-8 h-8 text-[#23A6F0]" />,
+      title: "Concrete",
+      description: "Defalcate is most focused in helping you discover your most beautiful smile"
+    },
+    {
+      id: 3,
+      icon: <FaRocket className="w-8 h-8 text-[#23A6F0]" />,
+      title: "Hack Growth",
+      description: "Overcame any hurdle or any other problem."
+    }
+  ];
+
   return (
-    <section className="py-20">
+    <div className="bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-sm text-gray-600 uppercase tracking-wider mb-2">
-            Featured Products
-          </h2>
-          <h3 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-[#252B42] mb-4">
             THE BEST SERVICES
-          </h3>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Problems trying to resolve the conflict between
+          </h2>
+          <p className="text-[#737373]">
+            Problems trying to resolve the conflict between <br />
+            the two major realms of Classical physics: Newtonian mechanics
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map(({ id, title, description, icon }) => {
-            const Icon = iconMap[icon];
-            
-            return (
-              <div key={id} className="text-center">
-                {/* Icon */}
-                <div className="mb-5 flex justify-center">
-                  <Icon className="w-12 h-12 text-[#23A6F0]" />
-                </div>
-
-                {/* Title */}
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">
-                  {title}
-                </h4>
-
-                {/* Description */}
-                <p className="text-gray-600 max-w-xs mx-auto">
-                  {description}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <div 
+              key={service.id}
+              className="bg-white p-8 rounded-lg text-center hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="flex justify-center mb-4">
+                {service.icon}
               </div>
-            );
-          })}
+              <h3 className="text-2xl font-bold text-[#252B42] mb-4">
+                {service.title}
+              </h3>
+              <div className="w-12 h-1 bg-[#E74040] mx-auto mb-4"></div>
+              <p className="text-[#737373] leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
