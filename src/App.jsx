@@ -1,33 +1,53 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { getToken } from './utils/tokenUtils';
+import { verifyToken } from './services/authService';
 import Home from './pages/Home';
-
-// Lazy loading components
-const MainLayoutLazy = React.lazy(() => import('./layout/MainLayout'));
-const HomeLazy = React.lazy(() => import('./pages/Home'));
-
-// Loading component
-const LoadingSpinner = () => (
-  <div className="flex justify-center items-center min-h-[200px]">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#23A6F0]"></div>
-  </div>
-);
+import About from './pages/About';
+import Shop from './pages/Shop';
+import Team from './pages/Team';
+import Pricing from './pages/Pricing';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ProductDetail from './pages/ProductDetail';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      verifyToken()
+        .then(user => {
+          // Update your user state/redux store here with the user data
+          console.log('User verified:', user);
+        })
+        .catch(error => {
+          console.error('Token verification failed:', error);
+        });
+    }
+  }, []);
+
   return (
     <Router>
-      <Switch>
-        <Route path="/">
-          <Suspense fallback={<LoadingSpinner />}>
-            <MainLayoutLazy>
-              <Suspense fallback={<LoadingSpinner />}>
-                <HomeLazy />
-              </Suspense>
-            </MainLayoutLazy>
-          </Suspense>
-        </Route>
-      </Switch>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/shop" component={Shop} />
+            <Route path="/team" component={Team} />
+            <Route path="/pricing" component={Pricing} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/product/:id" component={ProductDetail} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }

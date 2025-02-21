@@ -1,7 +1,7 @@
 export const featuredPosts = [
   {
     id: 1,
-    image: "https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=60",
     department: "English Department",
     title: "Graphic Design",
     rating: 4.9,
@@ -18,7 +18,7 @@ export const featuredPosts = [
   },
   {
     id: 2,
-    image: "https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg",
+    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&auto=format&fit=crop&q=60",
     department: "English Department",
     title: "Graphic Design",
     rating: 4.9,
